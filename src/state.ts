@@ -1,6 +1,5 @@
 import { createInterface, type Interface } from "readline";
 import { commandExit, commandHelp, commandMap, commandMapb } from "./commands/index.js";
-import { pokeApi, PokeAPI } from "./utils/pokeapi.js";
 
 type Command = 'exit' | 'help' | 'map' | 'mapb';
 
