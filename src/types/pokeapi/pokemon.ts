@@ -24,10 +24,10 @@ export type Pokemon = {
 type Ability = {
   is_hidden: boolean
   slot: number
-  ability: Ability2
+  ability: AbilityMeta
 }
 
-type Ability2 = {
+type AbilityMeta = {
   name: string
   url: string
 }
@@ -59,10 +59,10 @@ type Item = {
 
 type VersionDetail = {
   rarity: number
-  version: Version2
+  version: VersionMeta
 }
 
-type Version2 = {
+type VersionMeta = {
   name: string
   url: string
 }
@@ -332,12 +332,7 @@ type UltraSunUltraMoon = {
 }
 
 type GenerationViii = {
-  icons: Icons2
-}
-
-type Icons2 = {
-  front_default: string
-  front_female: any
+  icons: Icons
 }
 
 type Cries = {
@@ -348,27 +343,27 @@ type Cries = {
 type Stat = {
   base_stat: number
   effort: number
-  stat: Stat2
+  stat: StatMeta
 }
 
-type Stat2 = {
+type StatMeta = {
   name: string
   url: string
 }
 
 type Type = {
   slot: number
-  type: Type2
+  type: TypeMeta
 }
 
-type Type2 = {
+type TypeMeta = {
   name: string
   url: string
 }
 
 type PastType = {
   generation: Generation
-  types: Type3[]
+  types: Type[]
 }
 
 type Generation = {
@@ -376,28 +371,7 @@ type Generation = {
   url: string
 }
 
-type Type3 = {
-  slot: number
-  type: Type4
-}
-
-type Type4 = {
-  name: string
-  url: string
-}
-
 type PastAbility = {
-  generation: Generation2
-  abilities: Ability3[]
-}
-
-type Generation2 = {
-  name: string
-  url: string
-}
-
-type Ability3 = {
-  ability: any
-  is_hidden: boolean
-  slot: number
+  generation: Generation
+  abilities: Ability[]
 }

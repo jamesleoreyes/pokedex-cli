@@ -1,8 +1,8 @@
 import { createInterface, type Interface } from "readline";
-import { commandExit, commandHelp, commandMap, commandMapb, commandExplore, commandCatch } from "./commands/index.js";
+import { commandExit, commandHelp, commandMap, commandMapb, commandExplore, commandCatch, commandInspect } from "./commands/index.js";
 import type { Pokemon } from "./types/index.js";
 
-type Command = 'exit' | 'help' | 'map' | 'mapb' | 'explore' | 'catch';
+type Command = 'exit' | 'help' | 'map' | 'mapb' | 'explore' | 'catch' | 'inspect';
 
 type State = {
   interface: Interface;
@@ -70,6 +70,18 @@ function initState(): State {
           'catch shellos',
         ],
         callback: commandCatch,
+      },
+      inspect: {
+        name: 'inspect',
+        description: 'Get information about a caught Pokemon',
+        examples: [
+          'inspect pikachu',
+          'inspect gyarados',
+          'inspect wingull',
+          'inspect gastrodon',
+          'inspect shellos',
+        ],
+        callback: commandInspect,
       }
     },
     nextLocationsURL: null,

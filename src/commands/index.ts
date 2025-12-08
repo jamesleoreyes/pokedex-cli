@@ -4,3 +4,4 @@ export * from './map.command.js';
 export * from './mapb.command.js';
 export * from './explore.command.js';
 export * from './catch.command.js';
+export * from './inspect.command.js';
