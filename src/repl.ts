@@ -1,5 +1,5 @@
 import { createInterface } from "readline";
-import { Command } from "./types.js";
+import { Command } from "./types/index.js";
 import { getCommands } from "./commands/registry.js";
 import { cleanInput } from "./utils/format.js";
 

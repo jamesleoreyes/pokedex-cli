@@ -1,4 +1,4 @@
-import { CLICommand, Command } from "src/types.js";
+import { CLICommand, Command } from "../types/index.js";
 
 function commandHelp(commands: Record<Command, CLICommand>) {
   console.log()
