@@ -18,8 +18,8 @@ A fun, interactive command-line Pokedex application built with TypeScript and No
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/jamesleoreyes/pokedex.git
-cd pokedex
+git clone https://github.com/jamesleoreyes/pokedex-cli.git
+cd pokedex-cli
 ```
 
 2. Install dependencies:
