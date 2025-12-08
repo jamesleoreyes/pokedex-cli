@@ -1,5 +1,7 @@
 import { type LocationAreaResponse } from "../types/pokeapi.js";
+import { Cache } from "./pokecache.js";
 
+const pokeApiCache = new Cache(10000);
 
 class PokeAPI {
   private static readonly baseURL = 'https://pokeapi.co/api/v2';
@@ -7,10 +9,16 @@ class PokeAPI {
   constructor() { };
 
   async fetchLocationAreas(pageURL?: string): Promise<LocationAreaResponse> {
-    const response = await fetch(pageURL ? pageURL : `${PokeAPI.baseURL}/location-area`);
+    const url = pageURL ? pageURL : `${PokeAPI.baseURL}/location-area?offset=0&limit=20`;
+
+    const cached = pokeApiCache.get<LocationAreaResponse>(url)
+    if (cached) return cached;
+
+    const response = await fetch(url);
     if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
 
     const data: LocationAreaResponse = await response.json();
+    pokeApiCache.add(url, data);
     return data;
   };
 };
