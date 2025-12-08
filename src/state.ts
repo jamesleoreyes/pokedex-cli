@@ -1,7 +1,7 @@
 import { createInterface, type Interface } from "readline";
-import { commandExit, commandHelp, commandMap, commandMapb } from "./commands/index.js";
+import { commandExit, commandHelp, commandMap, commandMapb, commandExplore } from "./commands/index.js";
 
-type Command = 'exit' | 'help' | 'map' | 'mapb';
+type Command = 'exit' | 'help' | 'map' | 'mapb' | 'explore';
 
 type State = {
   interface: Interface;
@@ -13,7 +13,7 @@ type State = {
 type CLICommand = {
   name: string;
   description: string;
-  callback: (state: State) => Promise<void>;
+  callback: (state: State, ...args: string[]) => Promise<void>;
 }
 
 function initState(): State {
@@ -43,7 +43,12 @@ function initState(): State {
         name: 'mapb',
         description: 'Get the previous 20 location areas',
         callback: commandMapb,
-      }
+      },
+      explore: {
+        name: 'explore',
+        description: 'Show a list of Pokemon in a location area',
+        callback: commandExplore,
+      },
     },
     nextLocationsURL: null,
     prevLocationsURL: null,
