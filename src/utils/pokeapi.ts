@@ -12,7 +12,7 @@ class PokeAPI {
     const url = pageURL ? pageURL : `${PokeAPI.baseURL}/location-area?offset=0&limit=20`;
 
     const cached = pokeApiCache.get<LocationAreaResponse>(url)
-    if (cached) return cached;
+    if (cached !== undefined) return cached;
 
     const response = await fetch(url);
     if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
