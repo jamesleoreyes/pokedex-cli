@@ -1,4 +1,4 @@
-import { type LocationAreaResponse } from "../types/pokeapi.js";
+import type { LocationAreaResponse, FlatLocationAreaResponse } from "../types/pokeapi.js";
 import { Cache } from "./pokecache.js";
 
 const pokeApiCache = new Cache(10000);
@@ -8,17 +8,28 @@ class PokeAPI {
 
   constructor() { };
 
-  async fetchLocationAreas(pageURL?: string): Promise<LocationAreaResponse> {
+  async fetchLocationAreas(pageURL?: string): Promise<FlatLocationAreaResponse> {
     const url = pageURL ? pageURL : `${PokeAPI.baseURL}/location-area?offset=0&limit=20`;
 
-    const cached = pokeApiCache.get<LocationAreaResponse>(url)
+    const cached = pokeApiCache.get<FlatLocationAreaResponse>(url)
     if (cached !== undefined) return cached;
 
     const response = await fetch(url);
     if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
 
-    const data: LocationAreaResponse = await response.json();
+    const data: FlatLocationAreaResponse = await response.json();
     pokeApiCache.add(url, data);
+    return data;
+  };
+
+  async fetchLocationAreaByName(name: string): Promise<LocationAreaResponse> {
+    if (!name) throw new Error('Location area name is required');
+
+    const url = `${PokeAPI.baseURL}/location-area/${name}`;
+    const response = await fetch(url);
+    if (response.ok) throw new Error(`${response.status} ${response.statusText}`);
+
+    const data: LocationAreaResponse = await response.json();
     return data;
   };
 };

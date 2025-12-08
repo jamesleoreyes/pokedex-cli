@@ -1,9 +1,9 @@
 import { pokeApi } from "../utils/pokeapi.js";
 import { type State } from "../state.js";
-import { type LocationAreaResponse } from "src/types/pokeapi.js";
+import { type FlatLocationAreaResponse } from "src/types/pokeapi.js";
 
 async function commandMapb(state: State) {
-  let locationAreas: LocationAreaResponse = {
+  let locationAreas: FlatLocationAreaResponse = {
     count: 0,
     next: '',
     previous: '',
