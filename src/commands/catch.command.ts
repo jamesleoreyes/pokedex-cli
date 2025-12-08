@@ -16,6 +16,7 @@ async function commandCatch(state: State, ...args: string[]) {
   const roll = Math.floor(Math.random() * max);
   if (roll > pokemon.base_experience) {
     console.log(`${pokemonName} was caught!`);
+    console.log(`You can get details with the \`inspect ${pokemonName}\` command.`);
     state.pokedex.set(pokemonName, pokemon);
   } else {
     console.log(`${pokemonName} escaped!`);

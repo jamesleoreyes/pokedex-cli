@@ -9,7 +9,7 @@ async function commandInspect(state: State, ...args: string[]) {
 
   const pokemon = state.pokedex.get(pokemonName)
   if (pokemon === undefined) {
-    console.log(`You have not caught a ${pokemonName}`);
+    console.log(`You have not caught a ${pokemonName}. Try \`catch ${pokemonName}\` to attempt to catch one!`);
     return;
   } else {
     console.log(`Name: ${pokemon.name}`);

@@ -25,7 +25,7 @@ async function main() {
         };
       };
     } else {
-      console.log('Unknown command');
+      console.log('Unknown command. Type `help` for command usage.');
     };
 
     state.interface.prompt();
