@@ -1,4 +1,4 @@
-import { CLICommand, Command } from "../types/index.js";
+import { CLICommand, Command } from "../state.js";
 import { commandExit, commandHelp } from "./index.js";
 
 function getCommands(): Record<Command, CLICommand> {
