@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { cleanInput } from "./repl";
+import { cleanInput } from "./repl.js";
 
 describe.each([
   {
@@ -25,6 +25,14 @@ describe.each([
   {
     input: "variable spaces    between         words   ",
     expected: ["variable", "spaces", "between", "words"],
+  },
+  {
+    input: "UPPERCASE INPUT",
+    expected: ["uppercase", "input"],
+  },
+  {
+    input: "MiXeD CaSe WoRdS",
+    expected: ["mixed", "case", "words"],
   },
 ])("cleanInput($input)", ({ input, expected }) => {
   test(`Expected: ${expected}`, () => {
