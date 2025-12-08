@@ -1,6 +1,6 @@
 import { type State } from "../state.js";
 
-function commandHelp(state: State) {
+async function commandHelp(state: State) {
   console.log()
   console.log('Welcome to the Pokedex!');
   console.log('Usage:\n')
