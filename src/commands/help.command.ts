@@ -7,6 +7,9 @@ async function commandHelp(state: State) {
 
   for (const value of Object.values(state.registry)) {
     console.log(`${value.name}: ${value.description}`);
+    if (value.examples) {
+      console.log(` - Examples:\n     ${value.examples.join('\n     ')}`);
+    };
   };
 
   console.log()

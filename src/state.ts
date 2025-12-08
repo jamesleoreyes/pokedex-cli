@@ -13,6 +13,7 @@ type State = {
 type CLICommand = {
   name: string;
   description: string;
+  examples?: string[];
   callback: (state: State, ...args: string[]) => Promise<void>;
 }
 
@@ -47,6 +48,13 @@ function initState(): State {
       explore: {
         name: 'explore',
         description: 'Show a list of Pokemon in a location area',
+        examples: [
+          'explore pastoria-city-area',
+          'explore valley-windworks-area',
+          'explore eterna-forest-area',
+          'explore fuego-ironworks-area',
+          'explore mt-coronet-1f-route-207',
+        ],
         callback: commandExplore,
       },
     },

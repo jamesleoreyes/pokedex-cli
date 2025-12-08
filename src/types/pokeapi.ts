@@ -60,7 +60,7 @@ type PokemonEncounter = {
   version_details: VersionDetail2[];
 }
 
-type Pokemon = {
+export type Pokemon = {
   name: string;
   url: string;
 }

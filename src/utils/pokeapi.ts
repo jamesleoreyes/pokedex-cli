@@ -1,4 +1,4 @@
-import type { LocationAreaResponse, FlatLocationAreaResponse } from "../types/pokeapi.js";
+import type { LocationAreaResponse, FlatLocationAreaResponse, Pokemon } from "../types/pokeapi.js";
 import { Cache } from "./pokecache.js";
 
 const pokeApiCache = new Cache(10000);
@@ -25,9 +25,12 @@ class PokeAPI {
   async fetchLocationAreaByName(name: string): Promise<LocationAreaResponse> {
     if (!name) throw new Error('Location area name is required');
 
+    const cached = pokeApiCache.get<LocationAreaResponse>(name);
+    if (cached !== undefined) return cached;
+
     const url = `${PokeAPI.baseURL}/location-area/${name}`;
     const response = await fetch(url);
-    if (response.ok) throw new Error(`${response.status} ${response.statusText}`);
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
 
     const data: LocationAreaResponse = await response.json();
     return data;

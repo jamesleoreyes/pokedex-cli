@@ -10,9 +10,11 @@ async function main() {
     if (!input) state.interface.prompt();
 
     const command = input[0] as Command;
+    const args = input[1];
     if (command in state.registry) {
       try {
-        await state.registry[command].callback(state);
+        if (args) await state.registry[command].callback(state, args);
+        else await state.registry[command].callback(state);
       } catch (error) {
         if (error instanceof TypeError) {
           console.error(`Network or CORS error: ${error.message}`)
