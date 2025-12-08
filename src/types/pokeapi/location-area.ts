@@ -56,11 +56,11 @@ type Language = {
 }
 
 type PokemonEncounter = {
-  pokemon: Pokemon;
+  pokemon: PokemonRef;
   version_details: VersionDetail2[];
 }
 
-export type Pokemon = {
+type PokemonRef = {
   name: string;
   url: string;
 }

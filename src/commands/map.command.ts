@@ -1,6 +1,6 @@
 import { pokeApi } from "../utils/pokeapi.js";
 import { type State } from "../state.js";
-import { type FlatLocationAreaResponse } from "src/types/pokeapi.js";
+import { type FlatLocationAreaResponse } from "src/types/pokeapi/location-area.js";
 
 async function commandMap(state: State) {
   let locationAreas: FlatLocationAreaResponse = {

@@ -1,13 +1,15 @@
 import { createInterface, type Interface } from "readline";
-import { commandExit, commandHelp, commandMap, commandMapb, commandExplore } from "./commands/index.js";
+import { commandExit, commandHelp, commandMap, commandMapb, commandExplore, commandCatch } from "./commands/index.js";
+import type { Pokemon } from "./types/index.js";
 
-type Command = 'exit' | 'help' | 'map' | 'mapb' | 'explore';
+type Command = 'exit' | 'help' | 'map' | 'mapb' | 'explore' | 'catch';
 
 type State = {
   interface: Interface;
   registry: Record<Command, CLICommand>;
   nextLocationsURL: string | null;
   prevLocationsURL: string | null;
+  pokedex: Map<string, Pokemon>;
 }
 
 type CLICommand = {
@@ -57,9 +59,22 @@ function initState(): State {
         ],
         callback: commandExplore,
       },
+      catch: {
+        name: 'catch',
+        description: 'Attempt to catch a pokemon',
+        examples: [
+          'catch pikachu',
+          'catch gyarados',
+          'catch wingull',
+          'catch gastrodon',
+          'catch shellos',
+        ],
+        callback: commandCatch,
+      }
     },
     nextLocationsURL: null,
     prevLocationsURL: null,
+    pokedex: new Map()
   };
 };
 
