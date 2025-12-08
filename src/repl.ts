@@ -1,6 +1,7 @@
 import { createInterface } from "readline";
-import { getCommands } from "./commands/registry.js";
 import { Command } from "./types.js";
+import { getCommands } from "./commands/registry.js";
+import { cleanInput } from "./utils/format.js";
 
 const rl = createInterface({
   input: process.stdin,
@@ -9,13 +10,6 @@ const rl = createInterface({
 });
 
 const commands = getCommands();
-
-function cleanInput(input: string) {
-  const trimmed = input.trim().toLowerCase();
-  if (!trimmed) return [];
-  const words = trimmed.split(/\s+/);
-  return words;
-};
 
 function startREPL() {
   rl.prompt();
