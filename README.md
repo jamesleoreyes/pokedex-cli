@@ -1,5 +1,7 @@
 # Pokedex CLI
 
+![Cover](cover.jpg)
+
 A fun, interactive command-line Pokedex application built with TypeScript and Node.js. Explore the Pokemon world, catch Pokemon, and build your collection!
 
 ## Features
