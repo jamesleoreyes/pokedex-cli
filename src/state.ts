@@ -26,6 +26,9 @@ function initState(): State {
       output: process.stdout,
       prompt: 'Pokedex > ',
     }),
+    nextLocationsURL: null,
+    prevLocationsURL: null,
+    pokedex: new Map(),
     registry: {
       help: {
         name: 'help',
@@ -89,9 +92,6 @@ function initState(): State {
         callback: commandPokedex,
       },
     },
-    nextLocationsURL: null,
-    prevLocationsURL: null,
-    pokedex: new Map()
   };
 };
 
