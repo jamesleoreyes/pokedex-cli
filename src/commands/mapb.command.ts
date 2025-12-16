@@ -11,7 +11,7 @@ async function commandMapb(state: State) {
   };
 
   if (!state.prevLocationsURL) {
-    console.log('No previous pages available. Use `map` first to get initial location areas.');
+    console.log('No previous pages available. Use `map` to get the first 20 location areas.');
     return;
   } else {
     locationAreas = await pokeApi.fetchLocationAreas(state.prevLocationsURL);

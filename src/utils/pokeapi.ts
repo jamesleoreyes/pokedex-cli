@@ -1,7 +1,7 @@
 import type { LocationAreaResponse, FlatLocationAreaResponse, Pokemon } from "../types/index.js";
 import { Cache } from "./pokecache.js";
 
-const pokeApiCache = new Cache(10000);
+const pokeApiCache = new Cache(60000);
 
 class PokeAPI {
   private static readonly baseURL = 'https://pokeapi.co/api/v2';

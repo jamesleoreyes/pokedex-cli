@@ -10,6 +10,7 @@ async function commandHelp(state: State) {
     if (value.examples) {
       console.log(` - Examples:\n     ${value.examples.join('\n     ')}`);
     };
+    console.log();
   };
 
   console.log()
